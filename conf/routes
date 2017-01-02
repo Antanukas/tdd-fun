@@ -5,3 +5,4 @@
 # An example controller showing a sample home page
 GET     /api/accounts                           controllers.AccountController.getAccounts
 POST    /api/accounts                           controllers.AccountController.createAccount
+

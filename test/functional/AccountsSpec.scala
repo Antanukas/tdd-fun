@@ -1,13 +1,11 @@
 package functional
 
 import controllers.{Account, CreateAccountCommand}
-import org.scalatestplus.play.{OneAppPerTest, PlaySpec}
-import play.api.http.Writeable
-import play.api.libs.json.{JsValue, Json}
+import play.api.libs.json.Json
 import play.api.test.FakeRequest
-import play.api.test.Helpers.{GET, contentAsJson, contentType, route, status, _}
+import play.api.test.Helpers.{GET, _}
 
-class AccountsSpec extends PlaySpec with OneAppPerTest {
+class AccountsSpec extends FunctionalTest {
 
   import controllers.Converters._
 
@@ -25,10 +23,5 @@ class AccountsSpec extends PlaySpec with OneAppPerTest {
     }
   }
 
-  private def jsonRoute[T](req: FakeRequest[T])(implicit writes: Writeable[T]): JsValue = {
-    val result = route(app, req).get
-    status(result) mustBe OK
-    contentType(result) mustBe Some("application/json")
-    contentAsJson(result)
-  }
+
 }
